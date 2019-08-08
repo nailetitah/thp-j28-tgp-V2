@@ -1,0 +1,42 @@
+<div class="text-center my-5">
+	<h1><%= @user.first_name %></h1>
+	<h4><%= @user.last_name %></h4>
+	<h6><%= @user.description %></h6>
+
+	<div class="d-flex justify-content-center my-4">
+		<table class="table-striped table-sm table-hover text-left table-bordered">
+			<tr>
+				<td>Age</td>
+				<td><%= @user.age %></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><%= @user.email %></td>
+			</tr>
+
+			<tr>
+				<td>Ville</td>
+				<td><%= @user_city %></td>
+			</tr>
+		</table>
+	</div>
+		<p>Nombre de potins : <%= @gossips_count %> </p>
+		<p class="text-center">
+		<% if @gossips_count > 0 %>
+		<% @user_gossips.each do |gsp| %>
+		Potin n°<%= gsp.id %> : <%= gsp.title %> (<%= link_to "lien", gossip_path(gsp.id) %>)
+		</br>
+		<% end %>
+		<% end %>
+	</p>
+	<div class="mb-4">
+		<button class="btn btn-primary">
+			<%= link_to "Modifier l'utilisateur", edit_user_path(@user.id), 
+			:class => "text-white text-decoration-none" %>
+		</button>
+		<button class="btn btn-danger">
+			<%= link_to "Supprimer l'utilisateur", user_path(@user.id), :data => {:confirm => "Vous êtes sûr ?", :method => "delete"}, :class => "text-white text-decoration-none" %> 
+		</button>
+	</div>
+	<%= link_to "Retour à l'accueil", root_path %>
+</div>

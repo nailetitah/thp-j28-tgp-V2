@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-center">
+  <%= form_for @user do |f| %>
+
+    <div class="row text-left my-3">
+      <div class="col">
+        <%= f.label "Prénom" %>
+        <%= f.text_field :first_name, :class => 'form-control'  %>
+      </div>
+      <div class="col">
+        <%= f.label "Nom" %>
+        <%= f.text_field :last_name, :class => 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row text-left my-3">
+      <div class="col">
+        <%= f.label "Email" %><br>
+        <%= f.text_field :email, :class => 'form-control' %>
+      </div>
+
+      <div class="col">
+        <%= f.label "Age" %><br>
+        <%= f.text_field :age, :class => 'form-control' %>
+      </div>
+    </div>
+
+      <div class="row text-left my-3">
+      <div class="col">
+        <%= f.label "Mot de passe" %><br>
+        <%= f.text_field :password, :class => 'form-control', :type => 'password' %>
+      </div>
+
+      <div class="col">
+        <%= f.label "Confirmation" %><br>
+        <%= f.text_field :password_confirmation, :class => 'form-control', :type => 'password' %>
+      </div>
+    </div>
+
+    <div class="form-group my-3 text-left">
+      <%= f.label "Description" %><br>
+      <%= f.text_area :description, :class => 'form-control' %>
+    </div>
+
+    <div class="form-group my-4">
+      <%= f.label "Ville" %> 
+      <%= f.collection_select(:city_id, City.all, :id, :name) %>
+    </div>
+
+    <div class="form-group">
+      <%= submit_tag "Valider", :class => 'w-100 btn btn-primary'  %>
+    </div>
+  <% end %>
+</div>

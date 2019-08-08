@@ -1,0 +1,31 @@
+<div class="row mt-4">
+<% @users.each do |user| %>
+  <div class="col-sm-4 my-3 ">
+    <div class="my-4">
+        <table class="table-striped table-sm table-hover text-left table-bordered">
+          <tr>
+            <td>Prénom</td>
+            <td><%= user.first_name %></td>
+          </tr>
+          <tr>
+            <td>Nom</td>
+            <td><%= user.last_name %></td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td><%= user.age %></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><%= user.email %></td>
+          </tr>
+
+          <tr>
+            <td>Ville</td>
+            <td><%= City.find(user.city_id).name %></td>
+          </tr>
+        </table>
+      </div>
+  </div>
+<% end %>
+</div>

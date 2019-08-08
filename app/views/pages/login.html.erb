@@ -1,0 +1,21 @@
+
+<div class="text-center border border-primary my-5 py-4">
+  <h1 class="my-2">Se connecter</h1>
+  <div class="d-flex justify-content-center">
+    <%= form_for(:session, url: login_path) do |f| %>
+        
+        <%= f.label "Adresse email" %>
+        <%= f.email_field :email, :class => 'form-control mb-3' %>
+
+        <%= f.label "Mot de passe" %>
+        <%= f.password_field :password, :class => 'form-control mb-3', :type => 'password' %>
+
+      <div class="my-4">
+        <%= f.submit "Connexion", :class => "btn btn-primary" %>
+      </div>
+
+      <% end %>
+
+  </div>
+  <u><%= link_to "Créer un compte", new_user_path, :class => 'text-dark' %></u>
+</div>

@@ -1,0 +1,9 @@
+<hr>
+<div class="d-flex justify-content-between">
+	<p><span class="text-muted"><%= comment.author %> </span>	  	</br>
+	  	<%= comment.content %>
+	 </p>
+	 <p><%= link_to 'Effacer', [comment.gossip, comment],
+	 method: :delete, class: "text-danger", data: { confirm: 'Êtes-vous sûr ?' } %>
+     </p>
+</div>

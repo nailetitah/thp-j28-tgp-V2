@@ -1,0 +1,65 @@
+<div class="text-center my-5">
+	<h3><%= @gossip.title %></h3>
+	<h1>"<%= @gossip.content %>"</h2>
+	<div class="my-4">
+	<p>Potin n°<%= @gossip.id %></p>
+	<p>Rédigé le <%= @gossip_date %></br>Par <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user.id) %></p>
+</div>
+
+<div class="mb-4">
+    <%= render @gossip.tags %>
+</div>
+
+<!-- Modification du potin autorisée que si user logué = créateur du potin -->
+<% if current_user.id == @gossip.user.id %>
+  <div class="mb-4">
+  	<button class="btn btn-primary"><%= link_to "Modifier le potin", edit_gossip_path(@gossip.id), :class => "text-white text-decoration-none" %></button>
+  </div>
+  <div class="mb-4">
+  	<button class="btn btn-danger">
+  		<%= link_to "Supprimer le potin", gossip_path(@gossip.id),
+      	:data => {:confirm => "Vous êtes sûr ?", :method => "delete"}, :class => "text-white text-decoration-none" %>
+      </button>
+  </div>
+<% end %>
+
+<div class="mb-4">
+
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+  Ajouter un commentaire
+</button>
+</div>
+	<%= link_to "Retour à l'accueil", root_path %>
+</div>
+
+<!-- Fenêtre Modal -->
+<div class="my-2 text-center">
+  	<div class="text-left w-50" style="margin:0 auto">
+  <% if @gossip.comments.any? %>
+  	<h6>Commentaires</h6>
+  		<%= render @gossip.comments %>
+  <% else %>
+  	<p class="text-dark text-center">Pas de commentaire.</p>
+  <% end %>
+  	</div>
+</div>
+
+<div class="my-4 text-center">
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un commentaire</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'comments/form' %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

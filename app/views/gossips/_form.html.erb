@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center">
+<%= form_for @gossip do |f| %>
+
+  <% if @gossip.errors.any? %>
+    <% @gossip.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger" role="alert"><%= message %></div>
+    <% end %>
+  <% end %>
+  <div class="form-group my-4">
+  <%= f.label "Titre" %><br>
+  <%= f.text_field :title, :class => 'form-control' %>
+  </div>
+  <div class="form-group my-4">
+  <%= f.label "Contenu" %><br>
+  <%= f.text_area :content, :class => 'form-control' %>
+  </div>
+  <div class="form-group my-4">
+  <%= f.label "Tags" %> 
+  <%= f.select :tag_ids, Tag.all.collect {|x| [x.title, x.id]}, {}, :multiple => true %>
+  </div>
+  <div class="d-none">
+  <%= f.text_field :user_id, :value => current_user.id %>
+  </div>
+  <div class="form-group my-4">
+  <%= submit_tag "Valider", :class => 'w-100 btn btn-primary'  %>
+  </div>
+<% end %>
+</div>

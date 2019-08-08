@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-center">
+  <%= form_for(:session, url: login_path) do |f| %>
+      
+      <%= f.label "Adresse email" %>
+      <%= f.email_field :email, :class => 'form-control' %>
+
+      <%= f.label "Mot de passe" %>
+      <%= f.password_field :password, :class => 'form-control', :type => 'password' %>
+
+    <div class="my-4">
+      <%= f.submit "Connexion", :class => "btn btn-primary" %>
+    </div>
+
+    <% end %>
+
+</div>

@@ -1,0 +1,12 @@
+<%= form_for [ @gossip, @comment ] do |f| %>
+  <div class="d-none">
+  <%= f.text_field :author, :value => current_user.first_name %>
+  </div>
+  <div class="form-group mb-3">
+  <%= f.label "Commentaire" %><br>
+  <%= f.text_area :content, :class => 'form-control' %>
+  </div>
+  <div class="form-group mt-4">
+  <%= submit_tag "Valider", :class => 'btn btn-primary'  %>
+  </div>
+<% end %>
